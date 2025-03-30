@@ -768,7 +768,33 @@ public class Main {
 
 
     private static void listarTotalCarritosMayorAMenor() {
-
+        AggregateIterable<Document> iterDoc = mongoDatabase
+                .getCollection(ConexionMongo.COLLECTION_SHOPPING_CARTS_NAME)
+                .aggregate(
+                        Arrays.asList(
+                                Aggregates.unwind("$items"),
+                                Aggregates.addFields(
+                                        new Field<>("totalItemCost",
+                                                new Document("$multiply", Arrays.asList(
+                                                        "$items.quantity", "$items.price"
+                                                ))
+                                        )
+                                ),
+                                Aggregates.lookup("Usuarios", "user_Id", "user_Id", "userInfo"),
+                                Aggregates.group("$user_Id",
+                                        Accumulators.sum("totalCost", "$totalItemCost")
+                                ),
+                                Aggregates.sort(descending("totalCost")))
+                );
+        System.out.println("CARRITOS ORDENADOR DE MAYOR A MENOR PRECIO TOTAL:");
+        for (Document document : iterDoc) {
+            System.out.println("=====================================");
+            int userId = document.getInteger("_id");
+            String totalCost = String.format( "%.2f", document.getDouble("totalCost"));
+            System.out.println("ID: " + userId);
+            System.out.println("COSTE TOTAL: " + totalCost);
+            System.out.println("=====================================");
+        }
     }
 
     private static void listarTotalGastadoCompras() {
