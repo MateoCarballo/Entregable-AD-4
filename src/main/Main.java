@@ -10,14 +10,11 @@ import conexion.ConexionMongo;
 import model.User;
 import model.Videojuego;
 import org.basex.examples.api.BaseXClient;
-import org.basex.query.func.string.StringFormat;
 import org.bson.Document;
 import utilities.StringResources;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 import static com.mongodb.client.model.Sorts.descending;
 import static utilities.StringResources.CUADRO_COLOR_AZUL_MOSTRAR_VIDEOJUEGO;
