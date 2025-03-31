@@ -136,30 +136,7 @@ basexserver
 ---
 
 ## Notas Adicionales
-
-- Se recomienda revisar las estructuras de documentos en MongoDB para enlazar correctamente las colecciones.
-- El script `mongodb.js` debe contener datos suficientes para que las consultas 17 y 18 funcionen sin ejecutar otras operaciones previas.
-
-<style>
-  h1, h2, h3 {
-    color: #2c3e50;
-  }
-  code {
-    background-color: #ecf0f1;
-    padding: 2px 4px;
-    border-radius: 4px;
-  }
-  pre {
-    background: #f4f4f4;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  blockquote {
-    border-left: 4px solid #3498db;
-    padding-left: 10px;
-    font-style: italic;
-    color: #7f8c8d;
-  }
-</style>
-
+>[!WARNING]
+>- Se recomienda revisar las estructuras de documentos en MongoDB para enlazar correctamente las colecciones.
+>- El script `mongodb.js` debe contener datos suficientes para que las consultas 17 y 18 funcionen sin ejecutar otras operaciones previas.
 ---
